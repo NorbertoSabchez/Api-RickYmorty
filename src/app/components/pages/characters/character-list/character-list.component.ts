@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Character } from '@app/shared/interface/character.interface';
 import { CharacterService } from '@app/shared/services/character.service';
 
@@ -15,19 +16,27 @@ type RequestInfo = {
 export class CharacterListComponent implements OnInit {
  characters: Character[] = [];
   info: RequestInfo={
-    next: '',
+    next: null,
   };
  private pageNum = 1;
- private query: string | undefined;
+ private query: string;
  private scrollHideHeight=200;
  private scrollShowHeight=500;
 
-  constructor(private characterSvc: CharacterService) { }
+
+  constructor(private characterSvc: CharacterService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getDataFromService();
+    this.getCharacterByQuery();
   }
 
+  private getCharacterByQuery():void{
+    this.route.queryParams.pipe(take(1)).subscribe((params: ParamMap)=>{
+      console.log('parametro',params)
+      this.query = params['q'];
+      this.getDataFromService();
+    });
+  }
 
   private getDataFromService():void{
     this.characterSvc.searchCharacter(this.query, this.pageNum)
