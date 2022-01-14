@@ -1,1 +1,20 @@
-<p>character-details works!</p>
+<div class="row" *ngIf="character$ | async as character">
+        <div class="container">
+            <div class="image">
+                    <img [src]="character.image" 
+                    [alt]="character.name"
+                    class="img-character">
+            </div>
+            <div class="datos">
+                    <h2>Nombre: {{character.name}}</h2>
+                    <h4>Estado: {{character.status}}</h4>
+                    <h4 >Genero: {{character.gender}}</h4>
+                    <h4>Fecha de Creacion: {{character.created | date }}</h4>
+                    <h4>Origen: {{character.origin.name}}</h4>
+                    <h4>Ubicación: {{character.location.name}}</h4>
+            </div>
+        </div>
+    <button (click)="onGoBack()"class="btn btn-dark">
+        Volver
+    </button>
+</div>

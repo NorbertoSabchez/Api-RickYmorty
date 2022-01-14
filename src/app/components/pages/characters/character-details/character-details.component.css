@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    max-width: 100%;
+    border-radius: 15px 15px 0 0;
+   
+}
+
+
+.img-character{
+border-radius: 50%;
+}
+
+h2,h4{
+    margin: 25px;
+}

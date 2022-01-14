@@ -15,6 +15,6 @@ export class CharacterService {
     return this.http.get<Character[]>(filter);
   }
   getDetails(id:number){
-    return this.http.get<Character[]>(`$${environment.baseUrlAPI}/${id}`);
+    return this.http.get<Character>(`${environment.baseUrlAPI}/${id}`);
   }
 }

@@ -3,14 +3,20 @@ import { CommonModule } from '@angular/common';
 import { CharacterDetailsComponent } from '@characters/character-details/character-details.component';
 import { CharacterListComponent } from '@characters/character-list/character-list.component';
 import { RouterModule } from '@angular/router';
+import { CharacterComponent } from '@characters/character.component';
 
-const myComponents = [CharacterDetailsComponent, CharacterListComponent] 
+const myComponents = [
+  CharacterDetailsComponent, 
+  CharacterListComponent,
+  CharacterComponent
+
+] 
 
 @NgModule({
   declarations: [...myComponents],
   imports: [
     CommonModule, 
-    RouterModule
+    RouterModule,
   ],
   exports: [...myComponents],
 })
